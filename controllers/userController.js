@@ -15,8 +15,8 @@ exports.signup=(req,res,next)=>{
                 
             })
             user.save()
-                .then(()=>{
-                    res.status(201).json({message:"Nouvelle Utilisateur crée avec succés!!"})
+                .then((userSaved)=>{
+                    res.status(201).json({message:"Nouvelle Utilisateur crée avec succés!!",user:userSaved})
                 })
                 .catch((error)=>next(error))
         })
