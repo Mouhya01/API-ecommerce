@@ -7,7 +7,7 @@ const productSchema=mongoose.Schema({
     stock:{type:Number, required:true, default:0},
     category:{
         type:mongoose.Schema.Types.ObjectId,
-        ref:"Category",
+        ref:'Category',
         required:true
     }, 
 },

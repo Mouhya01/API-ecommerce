@@ -6,7 +6,7 @@ const Order=require('../models/Order')
 //creation d'une commande
 exports.createOrder=(req,res,next)=>{
     const order=new Order({
-        userId: req.body.userId,
+        user: req.body.user,
         products: req.body.products,
         totalPrice: req.body.totalPrice
     })

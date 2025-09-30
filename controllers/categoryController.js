@@ -28,11 +28,6 @@ exports.createCategory=(req,res,next)=>{
         })
         
         .catch((error)=>next(error))
-            
-
-        
-    
-
 }
 
 exports.getCategory=(req,res,next)=>{

@@ -2,20 +2,13 @@ const express=require('express')
 
 const app=express()
 
-//Importations des Routes pour la ressource produit
+//Importations des Routes pour les differntes ressources
 const productRoutes=require('./routes/productRoutes')
-
-//Importation des Routes pour la ressource user
 const userRoutes=require('./routes/userRoutes')
-
-//Importation des Routes pour la ressource order
 const orderRoutes=require('./routes/orderRoutes')
-
-//Importation des Routes pour la ressource Cart
 const cartRoutes=require('./routes/cartRoutes')
-
-//Importation des Routes pour la ressource Category
 const categoryRoutes=require('./routes/categoryRoutes')
+const reviewRoutes=require('./routes/reviewRoutes')
 
 //Pour la gestion d'erreur
 const errorHandler=require('./middlewares/errorMiddleware')
@@ -29,6 +22,7 @@ app.use('/api/auth',userRoutes)
 app.use('/api/orders',orderRoutes)
 app.use('/api/carts',cartRoutes)
 app.use('/api/categories',categoryRoutes)
+app.use('/api/reviews',reviewRoutes)
 
 //Middleware global d'erreurs
 app.use(errorHandler)
