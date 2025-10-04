@@ -12,7 +12,7 @@ exports.signup=(req,res,next)=>{
                 email:req.body.email,
                 username:req.body.username,
                 password:hash,
-                
+                role: req.body.role || "user",
             })
             user.save()
                 .then((userSaved)=>{
@@ -37,7 +37,7 @@ exports.login=(req,res,next)=>{
                         res.status(200).json({
                             user_id:user._id,
                             token:jwt.sign(
-                                {userID:user._id},
+                                {userID:user._id,role: user.role},
                                 process.env.JWT_SECRET,
                                 {expiresIn: "24h"}
                             )

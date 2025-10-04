@@ -14,6 +14,11 @@ const orderRoutes=require('./routes/orderRoutes')
 //Importation des Routes pour la ressource Cart
 const cartRoutes=require('./routes/cartRoutes')
 
+
+//Importation des Routes pour la ressource Coupon
+const couponRoutes=require('./routes/couponRoutes')
+
+
 const errorHandler=require('./middlewares/errorMiddleware')
 
 //Middleware pour parser les donnée json envoyée par les requete POST
@@ -24,6 +29,7 @@ app.use('/api/products',productRoutes)
 app.use('/api/auth',userRoutes)
 app.use('/api/orders',orderRoutes)
 app.use('/api/carts',cartRoutes)
+app.use('/api/coupons',couponRoutes)
 
 //Middleware global d'erreurs
 app.use(errorHandler)
