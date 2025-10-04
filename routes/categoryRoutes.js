@@ -1,9 +1,10 @@
 const express = require('express')
 const router=express.Router()
 const categoryController=require('../controllers/categoryController')
+const {auth,isAdmin}=require('../middlewares/auth')
 
 //Créer une category
-router.post('/',categoryController.createCategory)
+router.post('/',auth, isAdmin,categoryController.createCategory)
 
 //Recuperer toute les catégorie
 router.get('/',categoryController.getCategory)
@@ -12,10 +13,10 @@ router.get('/',categoryController.getCategory)
 router.get('/:id',categoryController.getCategoryById)
 
 //Modifier une category
-router.put('/:id',categoryController.updateCategory)
+router.put('/:id',auth, isAdmin, categoryController.updateCategory)
 
 //Supprimer une categorie
-router.delete('/:id',categoryController.deleteCategory)
+router.delete('/:id',auth,isAdmin, categoryController.deleteCategory)
 
 
 //Exportation des routes
