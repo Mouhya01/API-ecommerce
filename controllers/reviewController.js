@@ -77,9 +77,11 @@ exports.updateReview = (req, res, next) => {
                 return res.status(404).json({ message: "Review introuvable" })
             }
 
-            // TODO: vérifier que req.user === review.user.toString() ou req.isAdmin === true
+            if(review.user.toString()!==req.user.userId && req.user.role !== 'admin'){
+                return res.status(403).json({message:"Action non autorisée"})
+            }
 
-            if (rating !== undefined) review.rating = rating   // NOTE: correction Review → review
+            if (rating !== undefined) review.rating = rating   
             if (comment !== undefined) review.comment = comment
 
             return review.save()
@@ -112,7 +114,6 @@ exports.deleteReview = (req, res, next) => {
                 return res.status(404).json({ message: "Review introuvable" })
             }
 
-            // TODO: vérifier que req.user === review.user.toString() ou req.isAdmin === true
 
             return review.remove()   
                 .then(() => {
